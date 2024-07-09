@@ -6,6 +6,8 @@ import FilmsPresenter from './presenter/films-presenter.js';
 
 import {render} from './render.js';
 
+import { generateFilms } from './mock/film.js';
+
 const bodyElement = document.querySelector('body');
 const siteHeaderElement = bodyElement.querySelector('.header');
 const siteMainElement = bodyElement.querySelector('.main');
@@ -19,3 +21,5 @@ render(new FilterView(), siteMainElement);
 render(new FooterStatisticView(), siteFooterStatisticsElement);
 
 filmsPresenter.init(siteMainElement);
+
+generateFilms();

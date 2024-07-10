@@ -7,6 +7,7 @@ import FilmsPresenter from './presenter/films-presenter.js';
 import {render} from './render.js';
 
 import { generateFilms } from './mock/film.js';
+import { generateComments } from './mock/comment.js';
 
 const bodyElement = document.querySelector('body');
 const siteHeaderElement = bodyElement.querySelector('.header');
@@ -22,4 +23,8 @@ render(new FooterStatisticView(), siteFooterStatisticsElement);
 
 filmsPresenter.init(siteMainElement);
 
-generateFilms();
+const films = generateFilms();
+const comments = generateComments();
+
+console.log(films);
+console.log(comments);

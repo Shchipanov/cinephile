@@ -1,4 +1,4 @@
-import {titles, Rating, posters, AgeRating, names, surnames, NAME_COUNT, YearsDuration, countries, Runtime, genres, GenreCount, description} from "./constant";
+import {titles, Rating, posters, AgeRating, names, surnames, NAME_COUNT, YearsDuration, countries, Runtime, genres, GenreCount, description, MAX_COMMENTS_ON_FILM} from "./constant";
 import {getRandomValue, getRandomInteger} from "../utils";
 import { FILM_COUNT } from "../const";
 
@@ -35,13 +35,29 @@ const generateFilm = () => ({
 const generateFilms = () => {
     const films = Array.from({ length: FILM_COUNT }, generateFilm);
 
+    let totalCommentsCount = 0;
+
  return films.map((film, index) => {
+  const hasComments = getRandomInteger(0, 1);
+
+  const filmCommentsCount = hasComments
+    ? getRandomInteger(1, MAX_COMMENTS_ON_FILM)
+    : 0;
+
+    totalCommentsCount += filmCommentsCount;
+
    return {
      id: String(index + 1), // id - просто порядковый номер
+
+     comments: hasComments
+       ? Array.from({ length: filmCommentsCount }, (_value, commentIndex) =>
+           String(totalCommentsCount - commentIndex)
+         )
+       : [],
      filmInfo: film,
    };
  });
 
-}
+};
 
 export {generateFilms};

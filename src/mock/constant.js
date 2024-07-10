@@ -87,4 +87,16 @@ const GenreCount = {
 const description =
   "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquet varius magna, non porta ligula feugiat eget. Fusce tristique felis at fermentum pharetra.";
 
-export {titles, Rating, posters, AgeRating, names, surnames, NAME_COUNT, YearsDuration, countries, Runtime, genres, GenreCount, description};
+const MAX_COMMENTS_ON_FILM = 5;
+
+const comment =
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquet varius magna, non porta ligula feugiat eget.";
+
+const DaysDuration = {
+  MIN: 0,
+  MAX: 7,
+};
+
+const emotions = ["smile", "sleeping", "puke", "angry"];
+
+export {titles, Rating, posters, AgeRating, names, surnames, NAME_COUNT, YearsDuration, countries, Runtime, genres, GenreCount, description, MAX_COMMENTS_ON_FILM, comment, DaysDuration, emotions};

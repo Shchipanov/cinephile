@@ -17,20 +17,35 @@ export default class FilmsPresenter {
   filmListContainerComponent = new FilmListContainerView();
   filmButtonMoreComponent = new FilmButtonMoreView();
 
-  init = (container) => {
+  init = (container, filmsModel, commentsModel) => {
     this.container = container;
+    this.filmsModel = filmsModel;
+    this.commentsModel = commentsModel;
+
+    this.films = [...filmsModel.get()];
 
     render(this.sortComponent, this.container);
     render(this.filmsComponent, this.container);
     render(this.filmListComponent, this.filmsComponent.getElement());
-    render(this.filmListContainerComponent, this.filmListComponent.getElement());
+    render(
+      this.filmListContainerComponent,
+      this.filmListComponent.getElement()
+    );
 
-    for (let i = 0; i < FILM_COUNT; i++) {
-      render(new FilmCardView(), this.filmListContainerComponent.getElement());
+    for (let i = 0; i < this.films.length; i++) {
+      render(
+        new FilmCardView(this.films[i]),
+        this.filmListContainerComponent.getElement()
+      );
     }
 
     render(this.filmButtonMoreComponent, this.filmListComponent.getElement());
 
-    render(new FilmDetailsView(), this.container.parentElement);
+    const comments = [...this.commentsModel.get(this.films[0])];
+
+    render(
+      new FilmDetailsView(this.films[0], comments),
+      this.container.parentElement
+    );
   };
 }

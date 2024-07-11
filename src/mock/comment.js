@@ -19,8 +19,8 @@ const generateComment = () => ({
 });
 
 const getCommentCount = (films) =>
-  /*films.reduce((count, film) => count + film.comments.length, 0);*/
-  (films = 5);
+  films.reduce((count, film) => count + film.comments.length, 0);
+  //(films = 5);
 
 const generateComments = (films) => {
   const commentCount = getCommentCount(films);

@@ -7,4 +7,16 @@ const getRandomInteger = (a = 0, b = 1) => {
 
 const getRandomValue = (items) => items[getRandomInteger(0, items.length - 1)];
 
-export {getRandomInteger, getRandomValue};
+const formatStringToYear = (date) => new Date(date).getFullYear();
+
+const formatMinutesToTime = (minutes) => {
+  const MINUTES_PER_HOUR = 60;
+
+  return minutes < MINUTES_PER_HOUR
+    ? `${minutes}m`
+    : `${Math.floor(minutes / MINUTES_PER_HOUR)}h ${
+        minutes % MINUTES_PER_HOUR
+      }m`;
+};
+
+export {getRandomInteger, getRandomValue, formatStringToYear, formatMinutesToTime};
